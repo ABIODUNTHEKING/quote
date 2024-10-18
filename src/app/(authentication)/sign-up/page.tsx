@@ -33,6 +33,8 @@ export default function Home() {
   useLimitToast(TOAST_LIMIT);
 
   const onSubmit = async (data: ISignForm) => {
+    if (isLoading) return;
+    
     const { email, password, userName } = data;
 
     let imageUrl = "";
@@ -57,7 +59,7 @@ export default function Home() {
 
       router.push("/chats");
     } catch (err: any) {
-      console.log(err)
+      console.log(err);
       if (deleteToken != "") {
         axios.post(
           `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_ACCOUNT_NAME}/delete_by_token`,

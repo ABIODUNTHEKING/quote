@@ -2,7 +2,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const UsersService = createApi({
   reducerPath: "UsersService",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://quote-backend-knvu.onrender.com/api/users/" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: `${process.env.NEXT_PUBLIC_URL}/api/users/`,
+  }),
   endpoints: (builder) => ({
     getUserByEmailAndPassword: builder.mutation({
       query: ({ email, password }) => ({
@@ -22,7 +24,6 @@ export const UsersService = createApi({
       }),
     }),
     addNewFriend: builder.mutation({
-  
       query: ({ userId, friendId }) => ({
         url: "addNewFriend",
         method: "PUT",
@@ -36,5 +37,5 @@ export const {
   useGetUserByEmailAndPasswordMutation,
   useGetAllUsersQuery,
   useCreateUserMutation,
-  useAddNewFriendMutation
+  useAddNewFriendMutation,
 } = UsersService;

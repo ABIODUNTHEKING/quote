@@ -56,6 +56,7 @@ function ProfileImage({ setTemporaryImage, image }: IProfileImageProps) {
           className="w-24 rounded-full  object-fill"
           sizes="500"
           fill
+          priority
         />
         <CameraIcon className="w-6 absolute bottom-[2px] right-2 bg-gray-200 rounded-full p-1" />
       </label>

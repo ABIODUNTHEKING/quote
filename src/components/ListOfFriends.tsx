@@ -8,7 +8,11 @@ import UserIntro from "./UserIntro";
 import { useParams } from "next/navigation";
 import sortFriendBasedOnLastUpdatedMessage from "@/lib/utilis/sortFriendBasedOnLastUpdatedMessage";
 import { determineLastMessageInfo } from "@/lib/utilis/determineLastMessageInfo";
-import { ChatBubbleLeftIcon, UserPlusIcon } from "@heroicons/react/24/outline";
+import {
+  ChatBubbleLeftIcon,
+  UserPlusIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 
 import NewChat from "./NewChat";
 import useDeactivateMenuOnTouchOutside from "@/lib/customHooks/useDeactivateOnTouchOutsideMenu";
@@ -61,16 +65,14 @@ function ListOfFriends() {
 
           return (
             <Fragment key={friend.messageId}>
-              {friend.messages.length && (
-                <UserIntro
-                  name={friend.username}
-                  image={friend.profileImage}
-                  numOfUnreadMessages={unreadMessage.length}
-                  time={time}
-                  lastMessage={lastMessage}
-                  friendId={friend.id}
-                />
-              )}
+              <UserIntro
+                name={friend.username}
+                image={friend.profileImage}
+                numOfUnreadMessages={unreadMessage.length}
+                time={time}
+                lastMessage={lastMessage}
+                friendId={friend.id}
+              />
             </Fragment>
           );
         })
@@ -79,17 +81,31 @@ function ListOfFriends() {
       )}
 
       <div ref={menuRef}>
-        <ChatBubbleLeftIcon
-          className="absolute bottom-24 right-3 lg:bottom-3 w-10 bg-green-10 hidden lg:block text-white p-2 rounded-full z-50 cursor-pointer"
-          onClick={() => setIsAddFriendModalVisible((prevValue) => !prevValue)}
-        />
+        {isAddFriendModalVisible ? (
+          <XMarkIcon
+            className="absolute bottom-24 right-3 lg:bottom-3 w-10 bg-green-10 hidden lg:block text-white p-2 rounded-full z-50 cursor-pointer"
+            onClick={() =>
+              setIsAddFriendModalVisible((prevValue) => !prevValue)
+            }
+          />
+        ) : (
+          <ChatBubbleLeftIcon
+            className="absolute bottom-24 right-3 lg:bottom-3 w-10 bg-green-10 hidden lg:block text-white p-2 rounded-full z-50 cursor-pointer"
+            onClick={() =>
+              setIsAddFriendModalVisible((prevValue) => !prevValue)
+            }
+          />
+        )}
+
         <Link href="/new-chat">
           <ChatBubbleLeftIcon className="absolute bottom-24 right-3 lg:bottom-3 w-10 block lg:hidden bg-green-10 text-white p-2 rounded-full cursor-pointer" />
         </Link>
 
         {isAddFriendModalVisible && (
           <div className="absolute bg-white shadow p-3  overflow-y-scroll hide_scroll_bar w-full  hidden lg:block rounded-xl z-40 lg:top-0 right-0 h-full  lg:bottom-16 ">
-            <NewChat onHideNewChatModal={() => setIsAddFriendModalVisible(false)} />
+            <NewChat
+              onHideNewChatModal={() => setIsAddFriendModalVisible(false)}
+            />
           </div>
         )}
       </div>

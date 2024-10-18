@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const messagesService = createApi({
   reducerPath: "messagesService",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://quote-backend-knvu.onrender.com/api/chats/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_URL}/api/chats/` }),
   endpoints: (builder) => ({
     createMessage: builder.mutation({
       query: ({ messageData }) => ({

@@ -1,7 +1,7 @@
 "use client";
 import { useAppDispatch } from "@/lib/stateManager/hooks";
 import { useGetUserByEmailAndPasswordMutation } from "@/lib/stateManager/services/users.service";
-import {  useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { CurrentUserActions } from "@/lib/stateManager/features/currentUser.slice";
 import { useRouter } from "next/navigation";
@@ -24,10 +24,10 @@ export default function Home() {
   const router = useRouter();
   useLimitToast(TOAST_LIMIT);
 
-  const [update, { isLoading, isError, isSuccess }] =
-    useGetUserByEmailAndPasswordMutation();
+  const [update, { isLoading }] = useGetUserByEmailAndPasswordMutation();
 
   const onSubmit = async (formData: ILoginForm) => {
+    if (isLoading) return;
     try {
       const data = await update(formData).unwrap();
 

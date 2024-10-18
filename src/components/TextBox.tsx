@@ -68,8 +68,6 @@ export default function TextBox() {
       },
     };
 
-    console.log(roomExist)
-
     const messageResponse = roomExist
       ? updateChat({
           roomId: roomId,

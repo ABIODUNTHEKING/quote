@@ -31,6 +31,7 @@ export default function MessageBox({ params }: { params: { slug: string } }) {
                 className=" bg-green-10 bg-opacity-35 object-cover w-full h-full rounded-full"
                 height={500}
                 width={500}
+                priority
               />
             )}
           </div>

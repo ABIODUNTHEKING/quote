@@ -25,6 +25,7 @@ function Message({ friendId }: { friendId: string }) {
   return (
     <div
       className="flex-grow h-0 overflow-y-auto   px-5 flex flex-col gap-2 pt-5 "
+      
       ref={chatRef}
     >
       <p className="text-xs  bg-gray-500 text-white rounded  mx-auto p-3 text-center">

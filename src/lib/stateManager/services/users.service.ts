@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const UsersService = createApi({
   reducerPath: "UsersService",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://quote-backend-silk.vercel.app/api/users/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://quote-backend-knvu.onrender.com/api/users/" }),
   endpoints: (builder) => ({
     getUserByEmailAndPassword: builder.mutation({
       query: ({ email, password }) => ({

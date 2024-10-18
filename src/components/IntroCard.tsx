@@ -6,7 +6,7 @@ import Image from "next/image";
 function IntroCard() {
   return (
     <div className="bg-green-10 h-svh  hidden lg:block relative pt-10">
-      <Image src={logo} alt="logo" className=" w-40 mb-5 mx-auto" priority />
+      <Image src={logo} alt="logo" className=" w-40 mb-5 mx-auto" />
 
       <p className="text-lg text-center text-white">
         Share Ideas Effortlessly with Quote

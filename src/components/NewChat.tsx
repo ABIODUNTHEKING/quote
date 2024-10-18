@@ -21,7 +21,7 @@ function NewChat({ onHideNewChatModal }: { onHideNewChatModal?: () => void }) {
       user._id != currentUser._id && !currentUser.friends.includes(user._id)
   );
 
-  const sortedUsers = registeredUsersWithoutCurrentUser.sort(
+  const sortedUsers = registeredUsersWithoutCurrentUser?.sort(
     (userInfo1: IUser, userInfo2: IUser) =>
       userInfo1.userName.toLowerCase() < userInfo2.userName.toLowerCase()
         ? -1
